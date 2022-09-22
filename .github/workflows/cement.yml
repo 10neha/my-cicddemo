@@ -1,4 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
+# This workflow uses actions that are not certified by GitHub
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
 # documentation.
@@ -32,3 +32,10 @@ jobs:
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+    - name: Build and Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v3
+      with:
+        image: goyalanubhav/demo-repo
+        registry: docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
